@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+/* --------------------------
+   Global Design System
+---------------------------*/
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: #f7f5f2;
+  color: #18181b;
+  overflow-x: hidden;
+}
+
+/* Headings */
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Playfair Display", serif;
+}
+
+/* Selection */
+
+::selection {
+  background: #b98b43;
+  color: white;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b98b43;
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+.active-link{
+    color:#B98B43;
+}
+
+.active-link span:last-child{
+    width:100%;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #FCFBF8;
+  color: #18181B;
+}
+
+::selection {
+  background: #B98B43;
+  color: white;
+}
+
+/* Active navigation link */
+.active-link {
+  color: #B98B43;
+  font-weight: 600;
+}
+
+.active-link span:last-child {
+  width: 100%;
+}
