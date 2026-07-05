@@ -1,6 +1,6 @@
 import Navbar from "./components/layout/Navbar";
 import About from "./components/sections/About";
-import Hero from "./components/sections/hero";
+import Hero from "./components/sections/Hero";
 import Skills from "./components/sections/Skills";
 import FeaturedProject from "./components/sections/FeaturedProject";
 import TechRibbon from "./components/sections/TechRibbon";
