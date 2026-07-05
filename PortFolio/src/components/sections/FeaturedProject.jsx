@@ -129,7 +129,7 @@ export default function FeaturedProject() {
 
           </div>
 
-          <div className="flex gap-5 mt-14">
+          <div className="flex flex-col sm:flex-row gap-4 mt-14">
 
             <a
               href={featuredProject.demo}
