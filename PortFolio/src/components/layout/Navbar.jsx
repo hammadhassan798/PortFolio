@@ -116,7 +116,7 @@ export default function Navbar() {
 
           <div className="hidden lg:block">
             <Button
-              href="/Hammad_Hassan_Resume.pdf"
+              href="/resume.pdf"
               download
             >
               Resume
