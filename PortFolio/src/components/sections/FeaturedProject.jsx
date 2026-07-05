@@ -113,7 +113,21 @@ duration-300
 
             <a
               href={featuredProject.github}
-              className="px-8 py-4 rounded-full border flex items-center gap-2 hover:bg-black hover:text-white duration-300"
+              className="
+w-full
+sm:w-auto
+justify-center
+px-8
+py-4
+rounded-full
+bg-[#18181B]
+text-white
+flex
+items-center
+gap-2
+hover:bg-[#B98B43]
+duration-300
+"
             >
               GitHub
               <FaGithub />
