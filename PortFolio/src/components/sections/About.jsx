@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import SectionTitle from "../common/SectionTitle";
-import profile from "../../assets/images/profile.png";
+import profile from "../../assets/images/profile.webp";
 
 const stats = [
   { number: "15+", title: "Technologies" },

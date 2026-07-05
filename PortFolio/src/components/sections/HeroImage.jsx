@@ -13,7 +13,7 @@ import {
   SiPostgresql,
 } from "react-icons/si";
 
-import profile from "../../assets/images/profile.png";
+import profile from "../../assets/images/profile.webp";
 
 const icons = [
   {
