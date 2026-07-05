@@ -119,7 +119,7 @@ export default function Navbar() {
               href="/resume.pdf"
               download
             >
-              Resume
+              Resume Test
             </Button>
           </div>
 
