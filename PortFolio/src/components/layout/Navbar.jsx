@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
 
-import Logo from "./Logo";
+import Logo from "./logo";
 import NavItem from "./NavItem";
 import Button from "../common/Button";
 
