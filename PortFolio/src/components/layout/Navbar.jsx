@@ -172,7 +172,7 @@ export default function Navbar() {
               ))}
 
               <Button
-                href="/Hammad_Hassan_Resume.pdf"
+                href="/resume.pdf"
                 download
               >
                 Resume
