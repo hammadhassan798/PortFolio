@@ -47,7 +47,6 @@ export default function Navbar() {
     };
 
     window.addEventListener("scroll", handleScroll);
-
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
@@ -68,10 +67,13 @@ export default function Navbar() {
         <div
           className={`
             max-w-7xl
-            h-20
-            mt-5
+            h-16
+            lg:h-20
+            mt-3
+            lg:mt-5
             mx-auto
-            px-8
+            px-5
+            lg:px-8
             rounded-full
             flex
             items-center
@@ -85,7 +87,7 @@ export default function Navbar() {
             }
           `}
         >
-          <Logo />
+          <Logo isScrolled={isScrolled} />
 
           {/* Desktop Navigation */}
 
@@ -93,21 +95,14 @@ export default function Navbar() {
             {navLinks.map((item) => (
               <li key={item.title}>
                 <div
-                  className={`
-                    rounded-full
-                    transition-all
-                    duration-300
-                    ${
-                      activeSection === item.to
-                        ? "bg-[#C8A165] text-black shadow-md"
-                        : "hover:bg-black/5"
-                    }
-                  `}
+                  className={`rounded-full transition-all duration-300 ${
+                    activeSection === item.to
+                      ? "bg-[#C8A165] text-black shadow-md"
+                      : "hover:bg-black/5"
+                  }`}
                 >
                   <NavItem to={item.to}>
-                    <span className="px-5 py-2 block">
-                      {item.title}
-                    </span>
+                    <span className="px-5 py-2 block">{item.title}</span>
                   </NavItem>
                 </div>
               </li>
@@ -115,21 +110,18 @@ export default function Navbar() {
           </ul>
 
           <div className="hidden lg:block">
-            <Button
-              href="/resume.pdf"
-              download
-            >
-              Resume Test
+            <Button href="/resume.pdf" download>
+              Resume
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Button */}
 
           <button
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={() => setMenuOpen(true)}
             className="lg:hidden text-3xl"
           >
-            {menuOpen ? <IoClose /> : <HiOutlineMenuAlt3 />}
+            <HiOutlineMenuAlt3 />
           </button>
         </div>
       </motion.nav>
@@ -142,24 +134,49 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-[#F8F6F2] z-40 pt-32"
+            className="fixed inset-0 bg-black/40 backdrop-blur-md z-40"
           >
-            <ul className="flex flex-col items-center gap-8 text-2xl">
-              {navLinks.map((item) => (
-                <li key={item.title}>
-                  <div
-                    className={`
-                      rounded-full
-                      px-6
-                      py-2
-                      transition-all
-                      duration-300
-                      ${
-                        activeSection === item.to
-                          ? "bg-[#C8A165] text-black"
-                          : ""
-                      }
-                    `}
+            {/* Drawer */}
+
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{
+                type: "spring",
+                stiffness: 280,
+                damping: 28,
+              }}
+              className="absolute right-0 top-0 h-full w-[280px] bg-white shadow-2xl px-8 py-8"
+            >
+              {/* Close */}
+
+              <div className="flex justify-end mb-10">
+                <button
+                  onClick={() => setMenuOpen(false)}
+                  className="
+                    w-10
+                    h-10
+                    rounded-full
+                    bg-[#F5F5F5]
+                    flex
+                    items-center
+                    justify-center
+                    text-2xl
+                    hover:bg-[#C8A165]
+                    hover:text-white
+                    transition
+                  "
+                >
+                  <IoClose />
+                </button>
+              </div>
+
+              <ul className="flex flex-col gap-7 text-xl font-semibold">
+                {navLinks.map((item) => (
+                  <li
+                    key={item.title}
+                    className="border-b border-gray-200 pb-4"
                   >
                     <NavItem
                       to={item.to}
@@ -167,17 +184,20 @@ export default function Navbar() {
                     >
                       {item.title}
                     </NavItem>
-                  </div>
-                </li>
-              ))}
+                  </li>
+                ))}
+              </ul>
 
-              <Button
-                href="/resume.pdf"
-                download
-              >
-                Resume
-              </Button>
-            </ul>
+              <div className="mt-10">
+                <Button
+                  href="/resume.pdf"
+                  download
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Download Resume
+                </Button>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -3,6 +3,7 @@ export default function Button({
   href = "#",
   download = false,
   variant = "primary",
+  onClick,
 }) {
   const styles = {
     primary:
@@ -16,6 +17,7 @@ export default function Button({
     <a
       href={href}
       download={download}
+      onClick={onClick}
       className={`
         inline-flex
         items-center
