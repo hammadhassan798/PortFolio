@@ -1,40 +1,111 @@
-import { FaGithub, FaLinkedin, FaHeart } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaHeart,
+  FaEnvelope,
+} from "react-icons/fa";
+import { HiOutlineDocumentDownload } from "react-icons/hi";
 
 export default function Footer() {
   return (
     <footer className="bg-[#111] text-gray-400 border-t border-gray-800">
-      <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-6">
 
-        <div>
-          © {new Date().getFullYear()} Hammad Hassan.
-          All Rights Reserved.
+      <div className="max-w-7xl mx-auto px-6 py-12">
+
+        {/* Top */}
+
+        <div className="flex flex-col lg:flex-row justify-between gap-10">
+
+          {/* Left */}
+
+          <div>
+
+            <h2 className="text-3xl font-bold text-white">
+              Hammad Hassan
+            </h2>
+
+            <p className="text-[#C8A165] mt-2 font-medium">
+              Full Stack Developer
+            </p>
+
+            <p className="max-w-md mt-5 leading-7">
+              Passionate about building scalable, secure and modern web
+              applications using ASP.NET Core, MERN Stack, Python and AI
+              technologies.
+            </p>
+
+          </div>
+
+          {/* Right */}
+
+          <div>
+
+            <h3 className="text-xl text-white font-semibold mb-5">
+              Quick Links
+            </h3>
+
+            <div className="space-y-4">
+
+              <a
+                href="mailto:hammadzulfiqar648@gmail.com"
+                className="flex items-center gap-3 hover:text-[#C8A165] transition"
+              >
+                <FaEnvelope />
+                Email
+              </a>
+
+              <a
+                href="https://github.com/hammadhassan798"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 hover:text-[#C8A165] transition"
+              >
+                <FaGithub />
+                GitHub
+              </a>
+
+              <a
+                href="https://linkedin.com/in/hammad-hassan-2074b5413"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 hover:text-[#C8A165] transition"
+              >
+                <FaLinkedin />
+                LinkedIn
+              </a>
+
+              <a
+                href="/resume.pdf"
+                download
+                className="flex items-center gap-3 hover:text-[#C8A165] transition"
+              >
+                <HiOutlineDocumentDownload />
+                Resume
+              </a>
+
+            </div>
+
+          </div>
+
         </div>
 
-        <div className="flex gap-6 text-xl">
-          <a
-            href="https://github.com/hammadhassan798"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-[#C8A165] transition"
-          >
-            <FaGithub />
-          </a>
+        {/* Bottom */}
 
-          <a
-            href="https://linkedin.com/in/hammad-hassan-2074b5413"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-[#C8A165] transition"
-          >
-            <FaLinkedin />
-          </a>
-        </div>
+        <div className="border-t border-gray-800 mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
 
-        <div className="flex items-center gap-2">
-          Made with <FaHeart className="text-red-500" /> using React
+          <p>
+            © {new Date().getFullYear()} Hammad Hassan. All Rights Reserved.
+          </p>
+
+          <p className="flex items-center gap-2">
+            Built with <FaHeart className="text-red-500" /> using React,
+            Tailwind CSS & Framer Motion
+          </p>
+
         </div>
 
       </div>
+
     </footer>
   );
 }

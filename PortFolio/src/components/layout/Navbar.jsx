@@ -19,15 +19,38 @@ const navLinks = [
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
-    const scroll = () => {
+    const handleScroll = () => {
       setIsScrolled(window.scrollY > 40);
+
+      let current = "home";
+
+      navLinks.forEach((item) => {
+        const section = document.getElementById(item.to);
+
+        if (!section) return;
+
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.offsetHeight;
+
+        if (
+          window.scrollY >= sectionTop &&
+          window.scrollY < sectionTop + sectionHeight
+        ) {
+          current = item.to;
+        }
+      });
+
+      setActiveSection(current);
     };
 
-    window.addEventListener("scroll", scroll);
+    window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("scroll", scroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -44,40 +67,63 @@ export default function Navbar() {
       >
         <div
           className={`
-          max-w-7xl
-          h-20
-          mt-5
-          mx-auto
-          px-8
-          rounded-full
-          flex
-          items-center
-          justify-between
-          transition-all
-          duration-500
-
-          ${
-            isScrolled
-              ? "bg-white/75 backdrop-blur-xl border border-white/70 shadow-xl"
-              : "bg-transparent"
-          }
+            max-w-7xl
+            h-20
+            mt-5
+            mx-auto
+            px-8
+            rounded-full
+            flex
+            items-center
+            justify-between
+            transition-all
+            duration-500
+            ${
+              isScrolled
+                ? "bg-white/75 backdrop-blur-xl border border-white/70 shadow-xl"
+                : "bg-transparent"
+            }
           `}
         >
           <Logo />
 
-          <ul className="hidden lg:flex items-center gap-10">
+          {/* Desktop Navigation */}
+
+          <ul className="hidden lg:flex items-center gap-3">
             {navLinks.map((item) => (
               <li key={item.title}>
-                <NavItem to={item.to}>{item.title}</NavItem>
+                <div
+                  className={`
+                    rounded-full
+                    transition-all
+                    duration-300
+                    ${
+                      activeSection === item.to
+                        ? "bg-[#C8A165] text-black shadow-md"
+                        : "hover:bg-black/5"
+                    }
+                  `}
+                >
+                  <NavItem to={item.to}>
+                    <span className="px-5 py-2 block">
+                      {item.title}
+                    </span>
+                  </NavItem>
+                </div>
               </li>
             ))}
           </ul>
 
           <div className="hidden lg:block">
-            <Button href="/resume.pdf" download>
+            <Button
+              href="/Hammad_Hassan_Resume.pdf"
+              download
+            >
               Resume
             </Button>
           </div>
+
+          {/* Mobile Menu Button */}
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -87,6 +133,8 @@ export default function Navbar() {
           </button>
         </div>
       </motion.nav>
+
+      {/* Mobile Menu */}
 
       <AnimatePresence>
         {menuOpen && (
@@ -99,13 +147,36 @@ export default function Navbar() {
             <ul className="flex flex-col items-center gap-8 text-2xl">
               {navLinks.map((item) => (
                 <li key={item.title}>
-                  <NavItem to={item.to} onClick={() => setMenuOpen(false)}>
-                    {item.title}
-                  </NavItem>
+                  <div
+                    className={`
+                      rounded-full
+                      px-6
+                      py-2
+                      transition-all
+                      duration-300
+                      ${
+                        activeSection === item.to
+                          ? "bg-[#C8A165] text-black"
+                          : ""
+                      }
+                    `}
+                  >
+                    <NavItem
+                      to={item.to}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {item.title}
+                    </NavItem>
+                  </div>
                 </li>
               ))}
 
-              <Button href="/resume.pdf">Resume</Button>
+              <Button
+                href="/Hammad_Hassan_Resume.pdf"
+                download
+              >
+                Resume
+              </Button>
             </ul>
           </motion.div>
         )}
